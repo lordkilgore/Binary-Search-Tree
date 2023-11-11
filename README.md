@@ -41,7 +41,13 @@ For a tree of height $\lfloor log_2(N) - 1\rfloor$, the corresponding node map i
 
 In the unbalanced case, we see little change due to the node map being a perfect hash with operations in constant time, yet in the balanced case it is clear that the efficiency of the data structure reduces noticeably. It is unclear whether or not this reduction in efficiency warrants a new approach to visualizing the tree, however it does give rise to the possibility that better implementations exist. For future directions, there may exist a solution that uses inorder traversal to circumvent the need for a node map as presented here.
 
+**Typical BST Implementation**
+|               | Balanced Case | Unbalanced Case |
+| ------------- | :---: | :---: |
+| Runtime Complexity  | Insertion : $O(logN)$, Removal : $O(logN)$  | Insertion : $O(N)$, Removal : $O(N)$|
+| Space Complexity  | $O(N)$  | $O(N)$                 |
 
+**Node Map Implementation**
 |               | Balanced Case | Unbalanced Case |
 | ------------- | :---: | :---: |
 | Runtime Complexity  | Insertion : $O(logN)$, Removal : $O(NlogN)$  | Insertion : $O(N)$, Removal : $O(N)$|
