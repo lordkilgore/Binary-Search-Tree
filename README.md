@@ -31,5 +31,5 @@ Removal becomes $O(NlogN)$ as each step of removing an internal node with 2 chil
 **Space Complexity** 
 
 
-For a tree of height $\lfloor log_2(N) - 1\rfloor$, the corresponding node map is a map of $\lfloor log_2(N)\rfloor$ keys. Each key maps to an integer-valued list which has length $2^{level}$ and memory allocation $4$ for $level < 2$ and $2^{level}$ for $level > 2$, giving our space complexity of the node map being $O(3 * (4 * 4) + (\lfloor log_2 (N)\rfloor - 3) * (4 * 2^{level}))$
+For a tree of height $\lfloor log_2(N) - 1\rfloor$, the corresponding node map is a map of $\lfloor log_2(N)\rfloor$ keys. Each key maps to an integer-valued list which has length $2^{level}$ and memory allocation $4$ for $level < 2$ and $2^{level}$ for $level > 2$, giving our space complexity of the node map $O(3 * (4 * 4) + (\lfloor log_2 (N)\rfloor - 4) * (4 * 2^{level}))$. By homogeneity, we can reduce the expression to only its variate terms and find the complexity in terms of $N$: $O(log_2 (N) * 2^{level})$, notice this is an arithmetic series in this form, using the formula for the sum we find $O(log_2 (N) * \frac{2^3 + 2^log_2 (N)}{2}) = O(NlogN)$.
 
