@@ -43,7 +43,7 @@ In the unbalanced case, we see little change due to the node map being a perfect
 
 
 |               | Balanced Case | Unbalanced Case |
-| ------------- | ------------- | --------------- |
+| ------------- | :---: | :---: |
 | Runtime Complexity  | Insertion : $O(logN)$, Removal : $O(NlogN)$  | Insertion : $O(N)$, Removal : $O(N)$|
 | Space Complexity  | $O(NlogN)$  | $O(N)$                 |
 
