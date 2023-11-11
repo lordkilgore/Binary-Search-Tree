@@ -16,7 +16,7 @@ Removal remains $O(N)$, as the worst case requires $O((N - 1) + 1)$ for removing
 **Space Complexity** 
 
 
-For a tree of height $N - 1$, the corresponding node map is a map of $N$ keys. Each key maps to an integer-valued list of length $1$ and memory allocation of $4$ ([see Python's overallocation method](https://github.com/python/cpython/blob/main/Objects/listobject.c#L46C11-L98)), meaning that the space complexity of storing the node map is $O(4 * 4 * N) = O(N)$. Additionally, we are storing $N$ nodes in the tree itself, where each node contains, at most, $3$ pointers and $1$ integer-valued data member, each of which require $4$ bytes of memory. An unbalanced tree then has space complexity $O((N - 1) * (4 + 4 + 4 + 4) + 1 * (4 + 4)) = O(N)$. Under this implementation, we see that the data structure has total space complexity $O(2N) = O(N)$.
+For a tree of height $N - 1$, the corresponding node map is a map of $N$ keys. Each key maps to an integer-valued list of length $1$ with memory allocation of $4$ ([see Python's overallocation method](https://github.com/python/cpython/blob/main/Objects/listobject.c#L46C11-L98)), meaning that the space complexity of storing the node map is $O(4 * 4 * N) = O(N)$. Additionally, we are storing $N$ nodes in the tree itself, where each node contains, at most, $3$ pointers and $1$ integer-valued data member, each of which require $4$ bytes of memory. An unbalanced tree then has space complexity $O((N - 1) * (4 + 4 + 4 + 4) + 1 * (4 + 4)) = O(N)$. Under this implementation, we see that the data structure has total space complexity $O(2N) = O(N)$.
 
 ## Considering the Balanced Case
 
@@ -31,7 +31,7 @@ Removal becomes $O(NlogN)$ as each step of removing an internal node with 2 chil
 **Space Complexity** 
 
 
-For a tree of height $\lfloor log_2(N) - 1\rfloor$, the corresponding node map is a map of $\lfloor log_2(N)\rfloor$ keys. Each key maps to an integer-valued list which has length $2^{level}$ and memory allocation $4$ for $level < 2$ and $2^{level}$ for $level > 2$, giving our space complexity of the node map $O(3 * (4 * 4) + (\lfloor log_2 (N)\rfloor - 3) * (4 * 2^{level}))$. By homogeneity, we can reduce the expression to only its variate terms and find the complexity in terms of $N$: $O(log_2 (N) * 2^{level})$, notice this is an arithmetic series in this form, using the formula for its sum we find $O(log_2 (N) * \frac{2^3 + 2^{log_2 (N)}}{2}) = O(NlogN)$. Because space complexity of a binary tree is proportional to its number of nodes stored, it remains the same as in the unbalanced case $O(N)$, thus we get $O(N + Nlog(N)) = O(Nlog(N))$. 
+For a tree of height $\lfloor log_2(N) - 1\rfloor$, the corresponding node map is a map of $\lfloor log_2(N)\rfloor$ keys. Each key maps to an integer-valued list which has length $2^{level}$ with memory allocation $4$ for $level < 2$ and $2^{level}$ for $level > 2$, giving our space complexity of the node map $O(3 * (4 * 4) + (\lfloor log_2 (N)\rfloor - 3) * (4 * 2^{level}))$. By homogeneity, we can reduce the expression to only its variate terms and find the complexity in terms of $N$: $O(log_2 (N) * 2^{level})$, notice this is an arithmetic series in this form, using the formula for its sum we find $O(log_2 (N) * \frac{2^3 + 2^{log_2 (N)}}{2}) = O(NlogN)$. Because space complexity of a binary tree is proportional to its number of nodes stored, it remains the same as in the unbalanced case $O(N)$, thus we get $O(N + Nlog(N)) = O(Nlog(N))$. 
 
 
 
