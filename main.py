@@ -1,4 +1,4 @@
-from random import randint
+import mergesort
 
 class Node:
     left = None
@@ -77,6 +77,11 @@ class BinarySearchTree:
             current = self.search(key, subTree)
             if current != None:
                 parent = current.parent
+
+                for level, value in enumerate(list(self.nodeMap.values())):
+                    if current.key in value:
+                        nodeKey = level
+
                 # Case 1: Removing Leaf Node
                 if current.left == None and current.right == None:
                     if current == self.root:
@@ -87,6 +92,9 @@ class BinarySearchTree:
                             parent.left = None
                         else:
                             parent.right = None
+                    
+                    self.nodeMap.get(nodeKey).remove(current.key)
+                    return
                 
                 # Case 2: Removing Internal Node w/ 1 Child
                 elif current.left != None and current.right == None:
@@ -97,6 +105,11 @@ class BinarySearchTree:
                             parent.left = current.left
                         else:
                             parent.right = current.left
+
+                    self.nodeMap.get(nodeKey).remove(current.key)
+                    self.nodeMap.get(nodeKey).append(current.left.key)
+                    self.nodeMap.get(nodeKey + 1).remove(current.left.key)
+                    return
                 
                 elif current.left == None and current.right != None:
                     if current == self.root:
@@ -106,6 +119,11 @@ class BinarySearchTree:
                             parent.left = current.right
                         else:
                             parent.right = current.right
+                    
+                    self.nodeMap.get(nodeKey).remove(current.key)
+                    self.nodeMap.get(nodeKey).append(current.right.key)
+                    self.nodeMap.get(nodeKey + 1).remove(current.right.key)
+                    return
                 
                 # Case 3: Removing Internal Node w/ 2 Children
                 else:
@@ -113,16 +131,42 @@ class BinarySearchTree:
                     while successor.left != None:
                         successor = successor.left
                     
+                    self.nodeMap.get(nodeKey).remove(current.key)
                     current.key = successor.key
-                    self.remove(successor.key, successor.parent) # O(1) :)
-                        
-            print(f"Key {key} not found.")
+                    self.nodeMap.get(nodeKey).append(current.key)
 
-    def printTree(self, subTree = "root", spacing = 50):
+                    self.remove(successor.key, successor) # O(1) :)   
+                    return   
+                        
+    def getLevel(self, key):
+        for level, value in enumerate(list(self.nodeMap.values())):
+            if key in value:
+                return level
+
+    def printTree(self, subTree = "root", spacing = 50, multiplier = 4):
+        # for level, value in enumerate() 
         if subTree == "root":
-            current = self.root
-        else:
-            current = subTree
+            subTree = self.root.key
+        
+        baseLevel = self.getLevel(subTree)
+        
+        for level in range(len(self.nodeMap) - baseLevel):
+            output = ""
+            newSpacing = spacing - (multiplier * level)
+            output += newSpacing * " "
+            mergesort.mergeSort(self.nodeMap.get(level))
+            for key in self.nodeMap.get(level):
+                node = self.search(key)
+                
+                if node != self.root and node.parent.left == None:
+                    output += ((2 * multiplier - 4) * level) * " "
+                
+                
+                output += ((2 * multiplier - 4) * level) * " "
+
+                output += f"[{key}]"
+
+            print(output)
         
         
     def getHeight(self, subTree = "root"):
@@ -138,19 +182,3 @@ class BinarySearchTree:
         rightHeight = self.getHeight(current.right)
 
         return 1 + max(leftHeight, rightHeight)
-
-
-BST = BinarySearchTree()
-
-for i in range(10):
-    BST.insert(randint(0, 50))
-
-print(BST.getHeight())
-print(BST.nodeMap)
-
-# Make sure that remove() also removes from the NodeMap
-
-# Implement printTree function
-
-        
-
