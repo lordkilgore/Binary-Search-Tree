@@ -11,7 +11,7 @@ Under this implementation, each node's key is also stored in a map that direct h
 
 Insertion remains $O(N)$ as, in the worst case, an unbalanced tree would have $N$ levels implying that an insertion to the corresponding list in the node map requires $1$ operation as each list contains only $1$ element. This suggests that the overall runtime complexity of the algorithm is the sum of the complexity of traversal and the complexity of insertion; $O(N + 1) = O(N)$.  
 
-Removal remains $O(N)$, as the worst case requires $O((N - 1) + 1)$ for removing an internal node with $2$ children; each level of the tree is traversed besides the last as a leaf node cannot have two children ($O(N - 1)$), the node's previous key is removed from the map ($O(1)$), its successor's key is appended in the same list ($O(1)$, no resizing), then its successor is recursively removed ($O(1)$, because we search through its parent's subtree for it). Searching and height retrieval both remain the same, as the map is not interacted with in these cases.
+Removal remains $O(N)$, as the worst case requires $O((N - 1) + 1)$ for removing an internal node with $2$ children; each level of the tree is traversed besides the last as a leaf node cannot have two children ($O(N - 1)$), the node's previous key is removed from the map ( $O(1)$ ), its successor's key is appended in the same list ( $O(1)$ , no resizing), then its successor is recursively removed ( $O(1)$ , because we search through its parent's subtree for it). Searching and height retrieval both remain the same, as the map is not interacted with in these cases.
 
 **Space Complexity** 
 
