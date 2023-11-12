@@ -16,7 +16,7 @@ Removal remains $O(N)$, as the worst case requires $O((N - 1) + 1)$ for removing
 **Space Complexity** 
 
 
-For a tree of height $N - 1$, the corresponding node map is a map of $N$ keys. Each key maps to an integer-valued list of length $1$ with memory allocation of $4$ ([see Python's overallocation method](https://github.com/python/cpython/blob/main/Objects/listobject.c#L46C11-L98)), meaning that the space complexity of storing the node map is $O(4 * 4 * N) = O(N)$. Additionally, we are storing $N$ nodes in the tree itself, where each node besides the last contains, at most, $3$ pointers and $1$ integer-valued data member^[besides the last leaf node, which has only $1$ pointer and $1$ data member], each of which require $4$ bytes of memory. An unbalanced tree then has space complexity $O((N - 1) * (4 + 4 + 4 + 4) + 1 * (4 + 4)) = O(N)$. Under this implementation, we see that the data structure has total space complexity $O(2N) = O(N)$.
+For a tree of height $N - 1$, the corresponding node map is a map of $N$ keys. Each key maps to an integer-valued list of length $1$ with memory allocation of $4$ ([see Python's overallocation method](https://github.com/python/cpython/blob/main/Objects/listobject.c#L46C11-L98)), meaning that the space complexity of storing the node map is $O(4 * 4 * N) = O(N)$. Additionally, we are storing $N$ nodes in the tree itself, where each node besides the last contains, at most, $3$ pointers and $1$ integer-valued data member, each of which require $4$ bytes of memory. An unbalanced tree then has space complexity $O((N - 1) * (4 + 4 + 4 + 4) + 1 * (4 + 4)) = O(N)$. Under this implementation, we see that the data structure has total space complexity $O(2N) = O(N)$.
 
 ## Considering the Balanced Case
 
