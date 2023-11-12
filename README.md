@@ -2,7 +2,7 @@
 Simple binary search tree implementation in Python. Supports insertion, removal, search, and visualization. [WIP]
 
 # Node Map Implementation
-Under this implementation, each node's key is also stored in a map that direct hashes integer-valued keys corresponding to levels of the tree to integer-valued lists containing the keys of nodes in each level. I found this approach helpful when visualizing the tree (as accessing and printing nodes becomes a process of sorting each level's node list, then printing each list line-by-line) and studied its structure to conclude on how it affected the efficiency of the tree's operations overall.
+Under this implementation, each node's key is also stored in a map that direct hashes integer-valued keys corresponding to levels of the tree to integer-valued lists containing the keys of nodes in each level. I found this approach helpful when visualizing the tree (as accessing and printing nodes becomes a process of sorting each level's key list, then printing each list line-by-line) and studied its structure to conclude on how it affected the efficiency of the tree's operations overall.
 
 ## Considering the Unbalanced Case
 
