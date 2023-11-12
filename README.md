@@ -58,7 +58,7 @@ This implementation does become particularly more cumbersome in terms of its mem
 | Space Complexity  | $O(NlogN)$  | $O(N)$                 |
 
 
-It is unclear whether this increase in memory usage warrants exploring other implementations, however it does suggest that more efficient methods may exist. In future directions, there may exist a more efficient solution in inorder traversal and a revisualization of how a tree can be printed.
+It is unclear whether this increase in memory usage warrants exploring other implementations, however it does suggest that more efficient methods may exist. In future directions, there may exist a more efficient solution in inorder traversal and a revisualization as to how a binary tree can be printed.
 
 
 
