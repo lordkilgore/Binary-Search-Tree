@@ -45,9 +45,6 @@ As far as runtime complexity goes, it is apparent that this implementation does 
 
 This implementation does become particularly more cumbersome in terms of its memory usage, where we see the space complexity grow from linear to linearithmic in the balanced case. This is due to the fact that, in the balanced case, our memory allocation in each list within the map grows exponentially with respect to the key of the map in contrast to the unbalanced case where memory allocation remains constant. 
 
-
-It is unclear whether this increase in memory usage warrants exploring other implementations, however it does suggest that more efficient methods may exist. In future directions, there may exist a more efficient solution in inorder traversal and a revisualization of how a tree can be printed.
-
 **Typical BST Implementation**
 |               | Balanced Case | Unbalanced Case |
 | ------------- | :---: | :---: |
@@ -59,4 +56,9 @@ It is unclear whether this increase in memory usage warrants exploring other imp
 | ------------- | :---: | :---: |
 | Runtime Complexity  | Insertion : $O(logN)$, Removal : $O(logN)$  | Insertion : $O(N)$, Removal : $O(N)$|
 | Space Complexity  | $O(NlogN)$  | $O(N)$                 |
+
+
+It is unclear whether this increase in memory usage warrants exploring other implementations, however it does suggest that more efficient methods may exist. In future directions, there may exist a more efficient solution in inorder traversal and a revisualization of how a tree can be printed.
+
+
 
