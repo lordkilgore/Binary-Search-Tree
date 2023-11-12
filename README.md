@@ -40,7 +40,7 @@ For a tree of height $\lfloor log_2(N) - 1\rfloor$, the corresponding node map i
 
 # Conclusions
 
-In the unbalanced case, we see little change due to the node map being a perfect hash with operations in constant time, yet in the balanced case it is clear that the efficiency of the data structure reduces noticeably. It is unclear whether or not this reduction in efficiency warrants a new approach to visualizing the tree, however it does give rise to the possibility that better implementations exist. For future directions, there may exist a solution that uses inorder traversal to circumvent the need for a node map as presented here.
+As far as runtime complexity goes, it is apparent that this implementation does not suffer from the operations performed on the node map. This is what we should expect, since chaining allows for a perfect hash and Python's method of dynamic memory allocation averages out the runtime for its resizing operation to O(1). This implementation does become particularly more cumbersome in terms of its memory usage, where we see the space complexity grow from linear to linearithmic in the balanced case. This is due to the fact that, in the balanced case, our memory allocation in each list within the map grows exponentially with respect to the key of the map in contrast to the unbalanced case where memory allocation remains constant. It is unclear whether this increase in memory usage warrants exploring other implementations, however it does suggest that more efficient methods may exist. In future directions, there may exist a more efficient solution in inorder traversal and a revisualization of how a tree can be printed.
 
 **Typical BST Implementation**
 |               | Balanced Case | Unbalanced Case |
